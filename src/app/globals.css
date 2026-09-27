@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Marhey:wght@300..700&display=swap');
+
+:root {
+  --primary-purple: #9b24e8;
+  --primary-purple-glow: rgba(155, 36, 232, 0.45);
+  --primary-purple-dark: #6e13ab;
+  --primary-purple-light: #d88bf8;
+
+  --bg-dark: #0c0b10;
+  --bg-dark-card: #14131b;
+  --bg-dark-elevated: #1d1b26;
+  --border-dark: rgba(255, 255, 255, 0.08);
+  --border-dark-highlight: rgba(155, 36, 232, 0.35);
+
+  --text-primary: #f5f4f8;
+  --text-secondary: #a3a1b0;
+  --text-muted: #6e6c7c;
+
+  --paper-bg: #f5f4ef;
+  --paper-text: #17161b;
+  --paper-border: #23222a;
+
+  --accent-gold: #fbbf24;
+  --accent-blue: #3b82f6;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-purple: 0 0 30px rgba(155, 36, 232, 0.3);
+
+  --font-marhey: "Marhey", sans-serif;
+  --font-serif: "IBM Plex Serif", serif;
+  --font-arabic: "Cairo", sans-serif;
+  --font-main: "Cairo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+h1, h2, h3, h4, .marhey-title {
+  font-family: var(--font-marhey);
+  font-optical-sizing: auto;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(ellipse at 15% 10%, rgba(155, 36, 232, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 60%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(155, 36, 232, 0.08) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+/* ==========================================================================
+   GLOBAL ICON & SVG DEAD-CENTERING UTILITIES
+   Guarantees @animateicons/react (which renders div.inline-flex.items-center.justify-center)
+   and all icon buttons, pills, circles, and docks are 100% dead-centered horizontally & vertically.
+   ========================================================================== */
+
+.inline-flex {
+  display: inline-flex !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+/* All SVGs are block elements with zero baseline descender shifts or rogue inline margins */
+svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Animateicons wrapper div exact centering reset */
+div.inline-flex.items-center.justify-center {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+  vertical-align: middle !important;
+}
+
+/* Ensure inner animate-icon divs inside any button, circular container, or link are centered */
+button > div.inline-flex,
+a > div.inline-flex,
+div > div.inline-flex,
+span > div.inline-flex,
+.dock-item > div,
+.btn-icon > div {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+}
+
+/* Unique Neon Glow Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09080e;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9b24e8 0%, #ec4899 50%, #9b24e8 100%);
+  border-radius: 9999px;
+  border: 2px solid #09080e;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b326eb 0%, #f43f5e 50%, #b326eb 100%);
+  box-shadow: 0 0 14px rgba(179, 38, 235, 0.9), inset 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+/* Halftone/Paper Texture Overlay Utility */
+.texture-paper {
+  background-color: var(--paper-bg);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 0);
+  background-size: 12px 12px;
+}
+
+/* Purple Glow Utility */
+.glow-purple {
+  box-shadow: 0 0 25px var(--primary-purple-glow);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 16px var(--primary-purple-glow);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Glass Card */
+.glass-panel {
+  background: rgba(20, 19, 27, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-dark-highlight);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(155, 36, 232, 0.15);
+  color: var(--primary-purple-light);
+  border: 1px solid rgba(155, 36, 232, 0.3);
+}
+
+.badge-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-dark);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.98rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 16px rgba(155, 36, 232, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(155, 36, 232, 0.6);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.98rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-dark);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border: 1px solid var(--border-dark);
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background: rgba(155, 36, 232, 0.2);
+  border-color: var(--primary-purple);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(155, 36, 232, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(155, 36, 232, 0.7);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-slow {
+  animation: floatAnim 4s ease-in-out infinite;
+}
+
+/* Responsive utilities */
+/* Floating Deck Dock */
+.deck-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(15, 14, 22, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.deck-arrow-btn.left { left: 1rem; }
+.deck-arrow-btn.right { right: 1rem; }
+.deck-arrow-btn:hover {
+  background: rgba(155, 36, 232, 0.85);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.deck-dock {
+  animation: dockSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dock-item {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dock-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px) scale(1.15);
+}
+
+.dock-active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%) !important;
+  box-shadow: 0 4px 14px rgba(155, 36, 232, 0.5);
+}
+
+.dock-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 0.2rem;
+}
+
+.dock-tooltip {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(14, 13, 20, 0.95);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dock-item:hover .dock-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes dockSlideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .dock-tooltip {
+    display: none !important;
+  }
+  .deck-arrow-btn,
+  .modal-nav-arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .deck-dock {
+    padding: 0.35rem 0.45rem !important;
+    gap: 0.15rem !important;
+  }
+  .dock-item {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .dock-divider {
+    height: 18px !important;
+    margin: 0 0.1rem !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .deck-dock {
+    padding: 0.25rem 0.35rem !important;
+    gap: 0.1rem !important;
+  }
+  .dock-item {
+    width: 31px !important;
+    height: 31px !important;
+  }
+  .dock-divider {
+    display: none !important;
+  }
+}
+
