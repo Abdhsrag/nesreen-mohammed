@@ -51,7 +51,7 @@ export default function Footer() {
               download="Nesreen-Mohammed-Portfolio-2026.pdf"
               className="btn-secondary"
               style={{ fontSize: "0.85rem", padding: "0.6rem 1.2rem" }}
-              aria-label="Download Nesreen Mohammed Portfolio PDF"
+              aria-label="Download PDF — Nesreen Mohammed Portfolio"
             >
               <DownloadIcon size={16} />
               <span>Download PDF</span>
@@ -62,8 +62,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
-              style={{ fontSize: "0.85rem", padding: "0.6rem 1.2rem", background: "linear-gradient(135deg, #10b981 0%, #059669 100%)" }}
-              aria-label="Chat with Nesreen on WhatsApp"
+              style={{ fontSize: "0.85rem", padding: "0.6rem 1.2rem", background: "linear-gradient(135deg, #087f5b 0%, #047857 100%)" }}
+              aria-label="WhatsApp Chat with Nesreen"
             >
               <MessageCircleIcon size={16} />
               <span>WhatsApp Chat</span>

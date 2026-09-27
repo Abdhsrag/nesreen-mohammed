@@ -29,7 +29,6 @@ export default function FloatingDeckDock({
     const handleScroll = () => {
       const scrollPos = window.scrollY + 350;
       const isNearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 180;
-      const hero = document.getElementById("hero");
       const about = document.getElementById("about-nesreena");
       const projects = document.getElementById("projects");
       const contact = document.getElementById("contact");
@@ -152,7 +151,7 @@ export default function FloatingDeckDock({
           rel="noopener noreferrer"
           className="dock-item"
           title="WhatsApp Chat"
-          aria-label="Open WhatsApp Chat with Nesreen"
+          aria-label="Chat with Nesreen on WhatsApp"
         >
           <MessageCircleIcon size={19} color="#4ade80" />
           <span className="dock-tooltip">WhatsApp</span>
@@ -164,7 +163,7 @@ export default function FloatingDeckDock({
           download="Nesreen-Mohammed-Portfolio-2026.pdf"
           className="dock-item"
           title="Download PDF"
-          aria-label="Download 50-Page Portfolio PDF"
+          aria-label="Download PDF — Nesreen Mohammed Portfolio"
         >
           <DownloadIcon size={19} />
           <span className="dock-tooltip">Download PDF</span>

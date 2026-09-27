@@ -121,7 +121,7 @@ export default function HeroSection() {
             <button
               onClick={() => scrollTo("projects")}
               className="btn-primary hero-btn"
-              aria-label="Explore Selected Portfolio Projects"
+              aria-label="Explore Projects — Selected Portfolio"
             >
               <LayersIcon size={18} />
               <span>Explore Projects</span>
@@ -141,7 +141,7 @@ export default function HeroSection() {
               href="/nesreen-mohammed-portfolio.pdf"
               download="Nesreen-Mohammed-Portfolio-2026.pdf"
               className="btn-secondary hero-btn"
-              aria-label="Download 50-Page Portfolio PDF"
+              aria-label="Download PDF — Nesreen Mohammed Portfolio"
             >
               <DownloadIcon size={18} />
               <span>Download PDF</span>
@@ -172,14 +172,24 @@ export default function HeroSection() {
             }}
             title="Nesreen Mohammed"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/slides/nesreen-portrait.webp"
-              alt="Nesreen Mohammed Illustrated Self-Portrait"
-              width="390"
-              height="520"
-              style={{ width: "100%", height: "100%", objectFit: "cover", userSelect: "none", display: "block" }}
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet="/slides/responsive/nesreen-portrait-390.avif 390w, /slides/responsive/nesreen-portrait-640.avif 640w, /slides/responsive/nesreen-portrait-780.avif 780w"
+                sizes="(max-width: 487px) 80vw, 390px"
+              />
+              <img
+                src="/slides/responsive/nesreen-portrait-390.webp"
+                srcSet="/slides/responsive/nesreen-portrait-390.webp 390w, /slides/responsive/nesreen-portrait-780.webp 780w, /slides/nesreen-portrait.webp 855w"
+                sizes="(max-width: 487px) 80vw, 390px"
+                fetchPriority="high"
+                loading="eager"
+                alt="Nesreen Mohammed Illustrated Self-Portrait"
+                width="390"
+                height="520"
+                style={{ width: "100%", height: "100%", objectFit: "cover", userSelect: "none", display: "block" }}
+              />
+            </picture>
 
             <div
               style={{

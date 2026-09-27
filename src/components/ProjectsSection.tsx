@@ -204,7 +204,9 @@ export default function ProjectsSection() {
               <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", overflow: "hidden", backgroundColor: "#0d0c14" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={project.coverImage}
+                  src={project.coverImage.replace("/slides/", "/slides/responsive/").replace(".webp", "-480.webp")}
+                  srcSet={`${project.coverImage.replace("/slides/", "/slides/responsive/").replace(".webp", "-480.webp")} 480w, ${project.coverImage.replace("/slides/", "/slides/responsive/").replace(".webp", "-960.webp")} 960w, ${project.coverImage} 2160w`}
+                  sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1065px) calc((100vw - 77px) / 2), (max-width: 1415px) calc((100vw - 106px) / 3), 326px"
                   alt={project.title}
                   width="600"
                   height="338"
@@ -258,7 +260,7 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal key={selectedProject?.id ?? "closed"} project={selectedProject} onClose={() => setSelectedProject(null)} />
 
       <style jsx>{`
         .project-card:hover {

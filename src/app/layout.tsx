@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { Cairo, Marhey } from "next/font/google";
+import StyledJsxRegistry from "./registry";
 import "./globals.css";
+
+const cairo = Cairo({ subsets: ["latin"], variable: "--font-cairo", display: "swap" });
+const marhey = Marhey({ subsets: ["latin"], variable: "--font-heading", display: "swap" });
 
 export const viewport: Viewport = {
   themeColor: "#9b24e8",
@@ -122,20 +127,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${cairo.variable} ${marhey.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Marhey:wght@300..700&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          as="image"
+          type="image/avif"
+          imageSrcSet="/slides/responsive/nesreen-portrait-390.avif 390w, /slides/responsive/nesreen-portrait-640.avif 640w, /slides/responsive/nesreen-portrait-780.avif 780w"
+          imageSizes="(max-width: 487px) 80vw, 390px"
+          fetchPriority="high"
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body><StyledJsxRegistry>{children}</StyledJsxRegistry></body>
     </html>
   );
 }

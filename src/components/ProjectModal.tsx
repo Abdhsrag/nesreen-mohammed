@@ -16,10 +16,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const touchEndX = useRef<number>(0);
 
   useEffect(() => {
-    setActiveImageIdx(0);
-  }, [project]);
-
-  useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (!project) return;

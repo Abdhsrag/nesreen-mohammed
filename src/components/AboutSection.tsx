@@ -100,7 +100,9 @@ export default function AboutSection() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/slides/slide-02.webp"
+            src="/slides/responsive/slide-02-1280.webp"
+            srcSet="/slides/responsive/slide-02-640.webp 640w, /slides/responsive/slide-02-1280.webp 1280w, /slides/responsive/slide-02-1600.webp 1600w, /slides/slide-02.webp 2160w"
+            sizes="(max-width: 1600px) calc(100vw - 40px), 1560px"
             alt="Call Me Nesreena Illustrated Artist Profile Card"
             width="2160"
             height="1215"
@@ -133,7 +135,7 @@ export default function AboutSection() {
             <span>Chat on WhatsApp</span>
           </a>
 
-          <a href="/nesreen-mohammed-portfolio.pdf" download="Nesreen-Mohammed-Portfolio-2026.pdf" className="about-btn" aria-label="Download Nesreen Mohammed Portfolio PDF">
+          <a href="/nesreen-mohammed-portfolio.pdf" download="Nesreen-Mohammed-Portfolio-2026.pdf" className="about-btn" aria-label="Download PDF — Nesreen Mohammed Portfolio">
             <DownloadIcon size={18} />
             <span>Download PDF</span>
           </a>
